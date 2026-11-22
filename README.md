@@ -1,3 +1,33 @@
+# Track 10: does market co-movement change when simple signals work?
+
+> This is Vincent's fork of [valiyevoktay-cmd/open-quant-sprint](https://github.com/valiyevoktay-cmd/open-quant-sprint), with his contribution to Sprint 01, Track 10 ([Issue #16](https://github.com/valiyevoktay-cmd/open-quant-sprint/issues/16)). Both parts were merged into the sprint repository: Part 1 [#38](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/38) and Part 2 [#51](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/51). The original project README follows below the line.
+
+**Question.** Some hours the 20 coins in the panel move almost as one asset, and other hours more independently. The *absorption ratio* (Kritzman, Li, Page and Rigobon, 2011) measures this: the share of return variance explained by the first principal component of a rolling one-week covariance matrix. Does the rank IC of simple cross-sectional signals differ between high- and low-absorption hours?
+
+**Hypothesis.** This was pre-registered before any results. A cross-sectional signal can only use coin-specific movement, which is small when one factor dominates, so the IC should be closer to zero in high-absorption hours.
+
+**Method.**
+- Three signals: 24h momentum, 1h reversal and the baseline flow weights.
+- Per-hour Spearman IC against next-hour returns.
+- Absorption-ratio terciles fixed on the first 40 % of the training panel, then compared on the remaining 60 %.
+- 95 % intervals from a day-block bootstrap, and a Holm correction over six tests.
+
+**Results** (k = 1, last 60 % of the panel):
+
+| Signal | Mean IC, high AR | Mean IC, low AR | Difference | 95 % CI | Holm p |
+|---|---|---|---|---|---|
+| 24h momentum (primary) | −0.0263 | −0.0085 | −0.0177 | [−0.0318, −0.0037] | 0.072 |
+| 1h reversal | +0.0294 | +0.0289 | +0.0005 | [−0.0145, +0.0154] | 0.947 |
+| Baseline flow | −0.0158 | −0.0030 | −0.0128 | [−0.0259, −0.0002] | 0.259 |
+
+**Finding.** No comparison is significant after the correction: the absorption ratio does not significantly change these signals' IC. Reversal, the strongest signal, is the same in both regimes.
+
+The closest result runs against the hypothesis. Momentum's negative IC (24h winners tend to fall back over the next hour) is stronger when the coins move together. A plausible reason is that a coin that runs ahead of a tightly coupled market gets pulled back toward the group.
+
+The full write-up, with all six comparisons, the assumptions and the code, is in [`research/vincent/`](research/vincent/README.md). To reproduce, run `python research/vincent/part2_ic_by_absorption.py`.
+
+---
+
 # open-quant-sprint
 
 Backtest and look-ahead audit harness for cross-sectional strategies on 20 Binance USD-M perpetuals (1h bars). Used for Sprint 01 (Nov 9 - Dec 7, 2026).
