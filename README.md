@@ -1,6 +1,6 @@
 # Track 10: does market co-movement change when simple signals work?
 
-> This is Vincent's fork of [valiyevoktay-cmd/open-quant-sprint](https://github.com/valiyevoktay-cmd/open-quant-sprint), with his contribution to Sprint 01, Track 10 ([Issue #16](https://github.com/valiyevoktay-cmd/open-quant-sprint/issues/16)). Both parts were merged into the sprint repository: Part 1 [#38](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/38) and Part 2 [#51](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/51). The original project README follows below the line.
+> This fork of [valiyevoktay-cmd/open-quant-sprint](https://github.com/valiyevoktay-cmd/open-quant-sprint) holds Vincent's contribution to Sprint 01, Track 10 ([Issue #16](https://github.com/valiyevoktay-cmd/open-quant-sprint/issues/16)). Both parts were merged into the sprint repository: Part 1 [#38](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/38) and Part 2 [#51](https://github.com/valiyevoktay-cmd/open-quant-sprint/pull/51). The original project README follows below the line.
 
 **Question.** Some hours the 20 coins in the panel move almost as one asset, and other hours more independently. The *absorption ratio* (Kritzman, Li, Page and Rigobon, 2011) measures this: the share of return variance explained by the first principal component of a rolling one-week covariance matrix. Does the rank IC of simple cross-sectional signals differ between high- and low-absorption hours?
 
